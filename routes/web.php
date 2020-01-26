@@ -13,5 +13,6 @@
 
 Route::get('/', 'IndexController');
 Route::post('/ticket/new', 'Ticket\AddHandlerController');
+Route::get('/ticket/close/{ticket_id}/{user_id}', 'Ticket\CloseTicketHandlerController');
+Route::post('/ticket/msg/new', 'Ticket\AddMsgHandlerController');
 Route::get('/ticket/{ticket_id}', 'Ticket\IndexController');
-Route::post('/ticket/msg/new', 'Ticket\IndexController');

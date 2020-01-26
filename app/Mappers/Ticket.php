@@ -23,6 +23,7 @@ class Ticket extends Model
     const TABLE_NAME = 'ticket';
     const FIELD_ID = 'ticket_id';
     const FIELD_USER_ID = 'user_id';
+    const FIELD_OPEN = 'open';
     const FIELD_NAME = 'name';
     /**
      * @var string
