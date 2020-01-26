@@ -76,10 +76,12 @@
         @endforeach
         @if(!$user->is_admin)
             <h2>Новый тикет</h2>
-            <form method="post" action="/ticket/new/">
+            <form method="POST"  name="test" action="/ticket/new">
                 <input type="hidden" name="user" value="{{$user->user_id}}">
                 <input placeholder="введите название" name="name" maxlength="255"><br>
-                <textarea name="text"></textarea>
+            <br/>
+                <textarea name="text"></textarea><br/><br/>
+                <input type="submit" value="Создать">
             </form>
         @endif
     </div>

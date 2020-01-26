@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'IndexController');
+Route::post('/ticket/new', 'Ticket\AddHandlerController');
