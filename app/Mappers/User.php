@@ -4,6 +4,8 @@ namespace App\Mappers;
 
 use EloquentTypeHinting;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Mappers\Ticket;
 
 /**
  * Class User
@@ -12,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int user_id
  * @property string login
  * @property boolean is_admin
+ * @property HasMany tickets
  */
 class User extends Model
 {
@@ -32,4 +35,12 @@ class User extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * @return HasMany
+     */
+    public function tickets()
+    {
+        return $this->hasMany('App\Mappers\Ticket', self::FIELD_ID, Ticket::FIELD_USER_ID);
+    }
 }

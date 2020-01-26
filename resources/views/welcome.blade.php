@@ -64,10 +64,24 @@
         </style>
     </head>
     <body>
-    <div class="links">
-        <a href="/">Админ</a>
-        <a href="/?user=2">User1</a>
-        <a href="/?user=3">User2</a>
+    <div class="content">
+        <div class="links">
+            <a href="/">Админ</a>
+            <a href="/?user=2">User1</a>
+            <a href="/?user=3">User2</a>
+        </div>
+        <h1>Тикеты</h1>
+        @foreach ($tickets as $ticket)
+            <p><a href="/ticket/{{$ticket->ticket_id}}/?user={{$user->user_id}}">{{ $ticket->name }}</a> {{ $ticket->open ? 'открыт' : 'закрыт' }}</p>
+        @endforeach
+        @if(!$user->is_admin)
+            <h2>Новый тикет</h2>
+            <form method="post" action="/ticket/new/">
+                <input type="hidden" name="user" value="{{$user->user_id}}">
+                <input placeholder="введите название" name="name" maxlength="255"><br>
+                <textarea name="text"></textarea>
+            </form>
+        @endif
     </div>
     </body>
 </html>
