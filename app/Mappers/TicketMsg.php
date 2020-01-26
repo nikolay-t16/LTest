@@ -6,6 +6,7 @@ namespace App\Mappers;
 
 use EloquentTypeHinting;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Ticket
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int user_id
  * @property string name
  * @property boolean open
+ * @property HasOne user
  */
 class TicketMsg extends Model
 {
@@ -35,4 +37,12 @@ class TicketMsg extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * @return HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne('App\Mappers\User', self::FIELD_USER_ID, User::FIELD_ID);
+    }
 }
